@@ -4,7 +4,7 @@
       <v-card-title class="pb-0 mb-0">
         <v-layout row justify-space-between>
           <v-flex lg8 md8 sm7 xs7>
-            <v-icon small class="mr-1"></v-icon>Touch Probe
+            <v-icon small class="mr-1"></v-icon>Touch Probe [Seb]
           </v-flex>
           <v-flex lg4 md4 sm5 xs5>
             <v-select
@@ -292,48 +292,126 @@ export default {
     xProbeClick() {
       this.setCornerDirection();
       this.probeSequence = 'x';
-      this.probeCode = `M400\nG91\nM563 P49 S"XYZ-Probe"
-      \nG1 Z5 F${this.pluginCache.touchProbeFeedrate}\nG1 X${(((this.xDimension/2)-this.xOffset)*this.xDirection)} Y${(((this.yDimension/2)-this.yOffset)*this.yDirection)} F${this.pluginCache.touchProbeFeedrate}\nG1 X${(((this.xDimension/2)+5+(this.pluginCache.touchProbeEndmillDiameter/2))*this.xDirection*(-1))} F${this.pluginCache.touchProbeFeedrate}\nG1 Z${(-5-(this.pluginCache.touchProbeZDimension/2))} F${this.pluginCache.touchProbeFeedrate}\nT49\nM585 X10 P${this.pluginCache.touchProbeNumber} F${this.pluginCache.touchProbeFeedrate} S${this.xProbeDirection}\nT-1\nM400\nG10 L20 X${((this.xOffset)+(this.pluginCache.touchProbeEndmillDiameter/2))*(-1)*this.xDirection}\nG1 X${-5*this.xDirection} F${this.pluginCache.touchProbeFeedrate}\nM400\nM500\nG1 Z${5+(this.pluginCache.touchProbeZDimension/2)} F${this.pluginCache.touchProbeFeedrate}\nG1 Y${(((this.yDimension/2)-this.yOffset)*this.yDirection*(-1))} F${this.pluginCache.touchProbeFeedrate}\nG90\nG1 X0 F${this.pluginCache.touchProbeFeedrate}
-      \nM563 P49 D-1 H-1\nM291 P"Probe complete. Please remove probe." R"Success" S1`
+      this.probeCode = `
+      M400
+      G91
+      M563 P49 S"XYZ-Probe[Seb]"
+      
+      G1 Z5 F${this.pluginCache.touchProbeFeedrate}
+      G1 X${(((this.xDimension/2)-this.xOffset)*this.xDirection)} Y${(((this.yDimension/2)-this.yOffset)*this.yDirection)} F${this.pluginCache.touchProbeFeedrate}
+      G1 X${(((this.xDimension/2)+5+(this.pluginCache.touchProbeEndmillDiameter/2))*this.xDirection*(-1))} F${this.pluginCache.touchProbeFeedrate}
+      G1 Z${(-5-(this.pluginCache.touchProbeZDimension/2))} F${this.pluginCache.touchProbeFeedrate}
+      M585 X10 P${this.pluginCache.touchProbeNumber} F${this.pluginCache.touchProbeFeedrate} S${this.xProbeDirection}
+      M400
+      G10 L20 X${((this.xOffset)+(this.pluginCache.touchProbeEndmillDiameter/2))*(-1)*this.xDirection}
+      G1 X${-5*this.xDirection} F${this.pluginCache.touchProbeFeedrate}
+      M400
+      M500
+      G1 Z${5+(this.pluginCache.touchProbeZDimension/2)} F${this.pluginCache.touchProbeFeedrate}
+      G1 Y${(((this.yDimension/2)-this.yOffset)*this.yDirection*(-1))} F${this.pluginCache.touchProbeFeedrate}
+      G90
+      G1 X0 F${this.pluginCache.touchProbeFeedrate}
+      
+      M563 P49 D-1 H-1
+      M291 P"Probe complete. Please remove probe. [Seb]" R"Success" S1`
       this.dialogPrompt = "Ensure the endmill is above the Start Here hole with the Touch Probe clip attached.";
       this.showTouchProbeConfirm = true;
     },
     yProbeClick() {
       this.setCornerDirection();
       this.probeSequence = 'y';
-      this.probeCode = `M400\nG91\nM563 P49 S"XYZ-Probe"
-      \nG1 Z5 F${this.pluginCache.touchProbeFeedrate}\nG1 X${(((this.xDimension/2)-this.xOffset)*this.xDirection)} Y${(((this.yDimension/2)-this.yOffset)*this.yDirection)} F${this.pluginCache.touchProbeFeedrate}\nG1 Y${(((this.yDimension/2)+5+(this.pluginCache.touchProbeEndmillDiameter/2))*this.yDirection*(-1))} F${this.pluginCache.touchProbeFeedrate}\nG1 Z${(-5-(this.pluginCache.touchProbeZDimension/2))} F${this.pluginCache.touchProbeFeedrate}\nT49\nM585 Y10 P${this.pluginCache.touchProbeNumber} F${this.pluginCache.touchProbeFeedrate} S${this.yProbeDirection}\nT-1\nM400\nG10 L20 Y${((this.yOffset)+(this.pluginCache.touchProbeEndmillDiameter/2))*(-1)*this.yDirection}\nG1 Y${-5*this.yDirection} F${this.pluginCache.touchProbeFeedrate}\nM400\nM500\nG1 Z${5+(this.pluginCache.touchProbeZDimension/2)} F${this.pluginCache.touchProbeFeedrate}\nG1 X${(((this.xDimension/2)-this.xOffset)*this.xDirection*(-1))} F${this.pluginCache.touchProbeFeedrate}\nG90\nG1 Y0 F${this.pluginCache.touchProbeFeedrate}
-      \nM563 P49 D-1 H-1\nM291 P"Probe complete. Please remove probe." R"Success" S1`
+      this.probeCode = `
+      M400
+      G91
+      M563 P49 S"XYZ-Probe[Seb]"
+      
+      G1 Z5 F${this.pluginCache.touchProbeFeedrate}
+      G1 X${(((this.xDimension/2)-this.xOffset)*this.xDirection)} Y${(((this.yDimension/2)-this.yOffset)*this.yDirection)} F${this.pluginCache.touchProbeFeedrate}
+      G1 Y${(((this.yDimension/2)+5+(this.pluginCache.touchProbeEndmillDiameter/2))*this.yDirection*(-1))} F${this.pluginCache.touchProbeFeedrate}
+      G1 Z${(-5-(this.pluginCache.touchProbeZDimension/2))} F${this.pluginCache.touchProbeFeedrate}
+      M585 Y10 P${this.pluginCache.touchProbeNumber} F${this.pluginCache.touchProbeFeedrate} S${this.yProbeDirection}
+      M400
+      G10 L20 Y${((this.yOffset)+(this.pluginCache.touchProbeEndmillDiameter/2))*(-1)*this.yDirection}
+      G1 Y${-5*this.yDirection} F${this.pluginCache.touchProbeFeedrate}
+      M400
+      M500
+      G1 Z${5+(this.pluginCache.touchProbeZDimension/2)} F${this.pluginCache.touchProbeFeedrate}
+      G1 X${(((this.xDimension/2)-this.xOffset)*this.xDirection*(-1))} F${this.pluginCache.touchProbeFeedrate}
+      G90
+      G1 Y0 F${this.pluginCache.touchProbeFeedrate}
+      
+      M563 P49 D-1 H-1
+      M291 P"Probe complete. Please remove probe. [Seb]" R"Success" S1`
       this.dialogPrompt = "Ensure the endmill is above the Start Here hole with the Touch Probe clip attached.";
       this.showTouchProbeConfirm = true;
     },
     zProbeClick() {
       this.setCornerDirection();
       this.probeSequence = 'z';
-      this.probeCode = `M400\nG91\nM563 P49 S"XYZ-Probe"
-      \nT49\nM585 Z${(this.pluginCache.touchProbeZDimension-this.pluginCache.touchProbeZOffset)+10} P${this.pluginCache.touchProbeNumber} F${this.pluginCache.touchProbeFeedrate} S1\nT-1\nG10 L20 Z${this.pluginCache.touchProbeZOffset}\nG1 Z5 F${this.pluginCache.touchProbeFeedrate}\nM500\nG90
-      \nM563 P49 D-1 H-1\nM291 P"Probe complete. Please remove probe.}" R"Success" S1`
+      this.probeCode = `
+      M400
+      G91
+      M563 P49 S"XYZ-Probe[Seb]"
+      
+      M585 Z${(this.pluginCache.touchProbeZDimension-this.pluginCache.touchProbeZOffset)+10} P${this.pluginCache.touchProbeNumber} F${this.pluginCache.touchProbeFeedrate} S1
+      G10 L20 Z${this.pluginCache.touchProbeZOffset}
+      G1 Z5 F${this.pluginCache.touchProbeFeedrate}
+      M500
+      G90
+      
+      M563 P49 D-1 H-1
+      M291 P"Probe complete. Please remove probe. [Seb]" R"Success" S1`
       this.dialogPrompt = "Ensure the endmill is anywhere above the thinnest section of the Touch Probe, with the Touch Probe clip attached.";
       this.showTouchProbeConfirm = true;
     },
     cornerProbeClick() {
       this.setCornerDirection();
       this.probeSequence = 'corner';
-      this.probeCode = `M400\nG91\nM563 P49 S"XYZ-Probe"
-      \nG1 Z5 F${this.pluginCache.touchProbeFeedrate}\nG1 X${(((this.xDimension/2)-this.xOffset)*this.xDirection)} Y${(((this.yDimension/2)-this.yOffset)*this.yDirection)} F${this.pluginCache.touchProbeFeedrate}\nT49\nM585 Z10 P${this.pluginCache.touchProbeNumber} F${this.pluginCache.touchProbeFeedrate} S1\nT-1\nM400\nG10 L20 Z${this.pluginCache.touchProbeZOffset}\nG1 Z5 F${this.pluginCache.touchProbeFeedrate}
-      \nG1 X${(((this.xDimension/2)+5+(this.pluginCache.touchProbeEndmillDiameter/2))*this.xDirection*(-1))} F${this.pluginCache.touchProbeFeedrate}\nG1 Z${(-5-(this.pluginCache.touchProbeZDimension/2))} F${this.pluginCache.touchProbeFeedrate}\nT49\nM585 X10 P${this.pluginCache.touchProbeNumber} F${this.pluginCache.touchProbeFeedrate} S${this.xProbeDirection}\nT-1\nM400\nG10 L20 X${((this.xOffset)+(this.pluginCache.touchProbeEndmillDiameter/2))*(-1)*this.xDirection}\nG1 X${-5*this.xDirection} F${this.pluginCache.touchProbeFeedrate}\nG1 Z${5+(this.pluginCache.touchProbeZDimension/2)} F${this.pluginCache.touchProbeFeedrate}\nG1 X${(5+(this.xDimension/2))*this.xDirection} Y${(((this.yDimension/2)+5+(this.pluginCache.touchProbeEndmillDiameter/2))*this.yDirection*(-1))} F${this.pluginCache.touchProbeFeedrate}
-      \nG1 Z${(-5-(this.pluginCache.touchProbeZDimension/2))} F${this.pluginCache.touchProbeFeedrate}\nT49
-      \nM585 Y10 P${this.pluginCache.touchProbeNumber} F${this.pluginCache.touchProbeFeedrate} S${this.yProbeDirection}\nT-1\nM400\nG10 L20 Y${((this.yOffset)+(this.pluginCache.touchProbeEndmillDiameter/2))*-1*this.yDirection}\nG1 Y${-5*this.yDirection} F${this.pluginCache.touchProbeFeedrate}\nM400\nM500\nG1 Z${5+(this.pluginCache.touchProbeZDimension/2)} F${this.pluginCache.touchProbeFeedrate}\nG1 X${(((this.xDimension/2)-this.xOffset)*this.xDirection*(-1))} F${this.pluginCache.touchProbeFeedrate}\nG90\nG1 X0 Y0 F${this.pluginCache.touchProbeFeedrate}
-      \nM563 P49 D-1 H-1\nM291 P"Probe complete. Please remove probe." R"Success" S1`;
+      this.probeCode = `
+      M400
+      G91
+      M563 P49 S"XYZ-Probe[Seb]"
+      
+      G1 Z5 F${this.pluginCache.touchProbeFeedrate}
+      G1 X${(((this.xDimension/2)-this.xOffset)*this.xDirection)} Y${(((this.yDimension/2)-this.yOffset)*this.yDirection)} F${this.pluginCache.touchProbeFeedrate}
+      M585 Z10 P${this.pluginCache.touchProbeNumber} F${this.pluginCache.touchProbeFeedrate} S1
+      M400
+      G10 L20 Z${this.pluginCache.touchProbeZOffset}
+      G1 Z5 F${this.pluginCache.touchProbeFeedrate}
+      
+      G1 X${(((this.xDimension/2)+5+(this.pluginCache.touchProbeEndmillDiameter/2))*this.xDirection*(-1))} F${this.pluginCache.touchProbeFeedrate}
+      G1 Z${(-5-(this.pluginCache.touchProbeZDimension/2))} F${this.pluginCache.touchProbeFeedrate}
+      M585 X10 P${this.pluginCache.touchProbeNumber} F${this.pluginCache.touchProbeFeedrate} S${this.xProbeDirection}
+      M400
+      G10 L20 X${((this.xOffset)+(this.pluginCache.touchProbeEndmillDiameter/2))*(-1)*this.xDirection}
+      G1 X${-5*this.xDirection} F${this.pluginCache.touchProbeFeedrate}
+      G1 Z${5+(this.pluginCache.touchProbeZDimension/2)} F${this.pluginCache.touchProbeFeedrate}
+      G1 X${(5+(this.xDimension/2))*this.xDirection} Y${(((this.yDimension/2)+5+(this.pluginCache.touchProbeEndmillDiameter/2))*this.yDirection*(-1))} F${this.pluginCache.touchProbeFeedrate}
+      
+      G1 Z${(-5-(this.pluginCache.touchProbeZDimension/2))} F${this.pluginCache.touchProbeFeedrate}
+      
+      M585 Y10 P${this.pluginCache.touchProbeNumber} F${this.pluginCache.touchProbeFeedrate} S${this.yProbeDirection}
+      M400
+      G10 L20 Y${((this.yOffset)+(this.pluginCache.touchProbeEndmillDiameter/2))*-1*this.yDirection}
+      G1 Y${-5*this.yDirection} F${this.pluginCache.touchProbeFeedrate}
+      M400
+      M500
+      G1 Z${5+(this.pluginCache.touchProbeZDimension/2)} F${this.pluginCache.touchProbeFeedrate}
+      G1 X${(((this.xDimension/2)-this.xOffset)*this.xDirection*(-1))} F${this.pluginCache.touchProbeFeedrate}
+      G90
+      G1 X0 Y0 F${this.pluginCache.touchProbeFeedrate}
+      
+      M563 P49 D-1 H-1
+      M291 P"Probe complete. Please remove probe. [Seb]" R"Success" S1`;
       this.dialogPrompt = "Ensure the endmill is above the Start Here hole with the Touch Probe clip attached.";
       this.showTouchProbeConfirm = true;
     },
     async runProbeCode() {
       const content = this.probeCode;
 			try {
-				await this.upload({ filename: 'sys/probe.g', content });
-        this.$emit('editComplete', 'probe.g');
-        await this.sendCode(`M98 T0 Pprobe.g`)
+				await this.upload({ filename: 'sys/XYZ-probe.g', content });
+        this.$emit('editComplete', 'XYZ-probe.g');
+        await this.sendCode(`M98 P"XYZ-probe.g"`)
 			} catch (e) {
 				// TODO Optionally ask user to save file somewhere else
 			}

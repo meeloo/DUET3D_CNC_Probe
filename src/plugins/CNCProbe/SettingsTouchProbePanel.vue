@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title>
-      <span>Touch Probe</span>
+      <span>Touch Probe [Seb]</span>
       <v-spacer></v-spacer>
       <a v-show="!uiFrozen" href="#" @click.prevent="showResetConfirmation = true">
         <v-icon small class="mr-1">restore</v-icon>Revert settings</a>
